@@ -1,0 +1,111 @@
+@media only screen and (max-width: 768px) {
+  .cat {
+    display: none;
+  }
+  .center {
+    width: 100%;
+  }
+  .h-item {
+    width: 100px;
+  }
+  .h-item .item-ph {
+    font-weight: 500;
+  }
+  .h-item .item-ph a {
+    color: inherit;
+  }
+  .h-item .item-ph:hover {
+    color: #fcc000;
+  }
+  .h-item .action-ph {
+    color: #fcc000;
+  }
+  .life-wrap {
+    width: 100% !important;
+  }
+  header {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000000000000;
+  }
+  header .header-title {
+    display: inline-block !important;
+    margin: 0 auto;
+    padding-left: 5px;
+    text-align: center;
+    height: 100%;
+  }
+  header .header-title img {
+    width: 45px;
+    height: 45x;
+  }
+  header .header-title .Lemon {
+    display: inline-block;
+    height: 100%;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  header .header-menu {
+    display: none;
+  }
+  header .header-menu-ph {
+    cursor: pointer;
+    color: #fcc000;
+    margin-right: 5%;
+    line-height: 76px;
+    float: right;
+    display: inline !important;
+    font-size: 25px;
+  }
+  .wrap .center .friendLink-wrap {
+    width: 100% !important;
+  }
+  .wrap .center .md-wrap {
+    width: 100% !important;
+  }
+  .wrap .center .interact-wrap {
+    width: 100% !important;
+  }
+  .wrap .center .about-wrap {
+    width: 100% !important;
+  }
+  .wrap .center #main-left .blog-item {
+    margin: 10px 0 !important;
+    width: 100% !important;
+  }
+  .wrap .center #main-left .blog-item .blog-header .blog-title-wrap {
+    padding: 15px !important;
+  }
+  .wrap .center #main-left .blog-item .blog-header .blog-title-wrap .blog-title {
+    font-size: 16px;
+    padding-left: 5px;
+  }
+  .wrap .center #main-left .blog-item .blog-header .blog-title-wrap .blog-title .blog-icon-list .blog-icon {
+    margin: 0 2px !important;
+    font-size: 13px;
+  }
+  .wrap .center #main-left .blog-item .blog-header .blog-time {
+    width: 30%;
+  }
+  .wrap .center #main-left .blog-item .blog-header .blog-time .blog-day .blog-highlight {
+    font-size: 30px !important;
+  }
+  .wrap .center #main-left .blog-item .blog-header .blog-time .blog-else .blog-highlight {
+    font-size: 16px;
+  }
+  .wrap .center #main-left .blog-item .blog-context .img {
+    padding: 10px 20px !important;
+  }
+  .wrap .center #main-left .blog-item .blog-context .img img {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .wrap .center #main-left .blog-item .blog-footer .footer-link {
+    font-size: 14px !important;
+  }
+  .text-look {
+    top: 0px !important;
+    right: 10px !important;
+  }
+}

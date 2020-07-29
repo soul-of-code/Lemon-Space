@@ -1,0 +1,32 @@
+@media only screen and (max-width: 1200px) and (min-width: 992px) {
+  .center {
+    width: 940px;
+  }
+  .cat {
+    width: 150px !important;
+  }
+  .header-title {
+    float: left;
+    height: 100%;
+  }
+  .header-title img {
+    width: 60px;
+    height: 60px;
+  }
+  .header-title .Lemon {
+    display: inline-block;
+    height: 100%;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .header-menu .item {
+    margin-left: 44px;
+    font-size: 17px;
+  }
+  .hot-item {
+    padding: 5px 25px;
+  }
+  .hot-item a {
+    width: 120px !important;
+  }
+}
