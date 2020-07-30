@@ -97,9 +97,9 @@ class about extends Component {
     }
     editContext = context => {
         const { emoji } = this.state;
-        context = context.split(']').join('/');
-        context = context.split('[').join('/');
-        var arr = context.split('/');
+        context = context.split(']').join('@lmCLeMon123@');
+        context = context.split('[').join('@lmCLeMon123@');
+        var arr = context.split('@lmCLeMon123@');
         for (let e = 0; e < emoji.length; e++) {
             for (let a = 0; a < arr.length; a++) {
                 if (arr[a] == emoji[e].name) {

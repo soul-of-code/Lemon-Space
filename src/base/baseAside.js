@@ -60,7 +60,7 @@ class Laside extends Component {
                             </Row>
                         </div>
                     </div>
-                    <Affix offsetTop={76}>
+
                         <div className="tag-cloud">
                             <div className="tag-title">
                                 <span className='animated'><WechatOutlined/> 我的微信</span>
@@ -73,7 +73,6 @@ class Laside extends Component {
                             </div>
                             <div className="tag-2m tag-qq">麻烦备注从博客扫码来的哦<img src={qq2} alt=""/></div>
                         </div>
-                    </Affix>
                 </div>
             </div>
 
