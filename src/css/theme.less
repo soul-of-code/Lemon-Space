@@ -729,9 +729,10 @@ header{
             padding-top: 10px;
             .tag-title{
                 text-align: center;
-                width: 100%;
-                font-size: 26px;
-                padding-bottom: 10px;
+                width: 80%;
+                margin: 0 auto;
+                font-size: 24px;
+                padding-bottom: 5px;
                 border-bottom:1px solid @L_border;
                 margin-bottom: 10px;
                 transition: .2s linear;
@@ -757,14 +758,14 @@ header{
                 margin-bottom: 20px;
             }
             .tag-context{
-                padding: 0px 5px;
+                padding: 5px 5px;
                 .tag-list{
                     padding: 0;
                     font-size: 16px;
                     .tag-item{
                         margin: 5px 0;
                         padding: 4px 25px;
-                        a{
+                        b{
                             color:rgb(150,150,150);
                         }
                         span{
@@ -772,24 +773,12 @@ header{
                             color:rgb(150,150,150);
                         }
                     }
-                    .tag-item-action{
+                    .tag-item-action,.tag-item:hover{
                         background-color: @L_color;
                         border-left: 5px solid @L_fontColor;
                         border-top-right-radius: 10px;
                         border-bottom-right-radius: 10px;
-                        a{
-                            color:black;
-                        }
-                        span{
-                            color:black;
-                        }
-                    }
-                    .tag-item:hover{
-                        background-color: @L_color;
-                        border-left: 5px solid @L_fontColor;
-                        border-top-right-radius: 10px;
-                        border-bottom-right-radius: 10px;
-                        a{
+                        b{
                             color:black;
                         }
                         span{
@@ -831,7 +820,7 @@ header{
                     .hot-item{
                         padding: 5px 25px;
                         a{
-                            color: #969696;
+                            color:black;
                             overflow : hidden;
                              text-overflow: ellipsis;
                              display: inline-block;
@@ -849,29 +838,6 @@ header{
                                 padding-top: 5px;
                             }
                         }
-                        strong{
-                            position: relative;
-                            top:-5px;
-                            text-align: center;
-                            padding: 5px;
-                            line-height: 15px;
-                            width: 25px;
-                            height: 25px;
-                            display: inline-block;
-                            background-color: rgb(170,170,170);
-                            border-radius: 50%;
-                            // font-weight: 400;
-                            color:white;
-                        }
-                        #hot1{
-                            background-color: red;
-                        }
-                        #hot2{
-                            background-color: orangered;
-                        }
-                        #hot3{
-                            background-color: orange;
-                        }
                     }
                     .hot-item:hover{
                         background-color: @L_color;
@@ -880,6 +846,20 @@ header{
                         border-bottom-right-radius: 10px;
                         span{
                             color:black;
+                        }
+                    }
+                    .hot-brief{
+                        overflow: auto;
+                        img{
+                            width: 100px;
+                            height: 100px;
+                            margin-right: 10px;
+                            float: left;
+                            overflow: hidden;
+                        }
+                        p{
+                            display: inline;
+                            font-size: 14px;
                         }
                     }
                 }

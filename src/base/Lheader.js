@@ -79,7 +79,7 @@ class Lheader extends Component {
       case 'friendLink':leaderAction[3] = true;break;
       case 'about':leaderAction[4] = true;break;
     }
-    this.setState({leaderAction:leaderAction})
+    this.setState({leaderAction:leaderAction,headerVisible:false})
   }
   //控制手机端header-menu的Visable
   handleHeaderVisibleChange = (visible)=>this.setState({headerVisible:visible});

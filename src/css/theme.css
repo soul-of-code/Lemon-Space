@@ -713,9 +713,10 @@ header .center .header-menu-ph {
 }
 .wrap #main-right .tag-cloud .tag-title {
   text-align: center;
-  width: 100%;
-  font-size: 26px;
-  padding-bottom: 10px;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 24px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #e7e8e6;
   margin-bottom: 10px;
   transition: 0.2s linear;
@@ -741,7 +742,7 @@ header .center .header-menu-ph {
   margin-bottom: 20px;
 }
 .wrap #main-right .tag-cloud .tag-context {
-  padding: 0px 5px;
+  padding: 5px 5px;
 }
 .wrap #main-right .tag-cloud .tag-context .tag-list {
   padding: 0;
@@ -751,34 +752,25 @@ header .center .header-menu-ph {
   margin: 5px 0;
   padding: 4px 25px;
 }
-.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item a {
+.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item b {
   color: #969696;
 }
 .wrap #main-right .tag-cloud .tag-context .tag-list .tag-item span {
   float: right;
   color: #969696;
 }
-.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item-action {
-  background-color: rgba(246, 184, 0, 0.3);
-  border-left: 5px solid #fcc000;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item-action a {
-  color: black;
-}
-.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item-action span {
-  color: black;
-}
+.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item-action,
 .wrap #main-right .tag-cloud .tag-context .tag-list .tag-item:hover {
   background-color: rgba(246, 184, 0, 0.3);
   border-left: 5px solid #fcc000;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item:hover a {
+.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item-action b,
+.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item:hover b {
   color: black;
 }
+.wrap #main-right .tag-cloud .tag-context .tag-list .tag-item-action span,
 .wrap #main-right .tag-cloud .tag-context .tag-list .tag-item:hover span {
   color: black;
 }
@@ -818,7 +810,7 @@ header .center .header-menu-ph {
   padding: 5px 25px;
 }
 .wrap #main-right .hot-door .hot-context .hot-list .hot-item a {
-  color: #969696;
+  color: black;
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-block;
@@ -839,28 +831,6 @@ header .center .header-menu-ph {
   float: left;
   padding-top: 5px;
 }
-.wrap #main-right .hot-door .hot-context .hot-list .hot-item strong {
-  position: relative;
-  top: -5px;
-  text-align: center;
-  padding: 5px;
-  line-height: 15px;
-  width: 25px;
-  height: 25px;
-  display: inline-block;
-  background-color: #aaaaaa;
-  border-radius: 50%;
-  color: white;
-}
-.wrap #main-right .hot-door .hot-context .hot-list .hot-item #hot1 {
-  background-color: red;
-}
-.wrap #main-right .hot-door .hot-context .hot-list .hot-item #hot2 {
-  background-color: orangered;
-}
-.wrap #main-right .hot-door .hot-context .hot-list .hot-item #hot3 {
-  background-color: orange;
-}
 .wrap #main-right .hot-door .hot-context .hot-list .hot-item:hover {
   background-color: rgba(246, 184, 0, 0.3);
   border-left: 5px solid #fcc000;
@@ -869,6 +839,20 @@ header .center .header-menu-ph {
 }
 .wrap #main-right .hot-door .hot-context .hot-list .hot-item:hover span {
   color: black;
+}
+.wrap #main-right .hot-door .hot-context .hot-list .hot-brief {
+  overflow: auto;
+}
+.wrap #main-right .hot-door .hot-context .hot-list .hot-brief img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+  float: left;
+  overflow: hidden;
+}
+.wrap #main-right .hot-door .hot-context .hot-list .hot-brief p {
+  display: inline;
+  font-size: 14px;
 }
 .wrap .wrap-title {
   width: 100%;

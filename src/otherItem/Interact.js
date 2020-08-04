@@ -378,7 +378,7 @@ class about extends Component {
                         </div>
                     </Col>
                     <Col xs={0} sm={0} md={0} lg={7} xl={7} id='main-right'>
-                        <Laside />
+                        <Laside haveHot = {true} />
                     </Col>
                 </Row>
 

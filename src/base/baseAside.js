@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Affix } from 'antd'
+import { Row, Col, Affix, Typography } from 'antd'
 import { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import axios from 'axios'
@@ -25,11 +25,36 @@ import {
     Switch
 } from 'react-router-dom'
 
+var baseAxios = axios.create({
+    baseURL: 'https://myblog.city:4000/blogView'
+})
+
+const { Paragraph } = Typography
+
 class Laside extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            hots: [],
+            loading: true,
+        }
+    }
+    componentWillMount() {
+        const { haveHot } = this.props;
+        this.setState({ loading: true });
+        if (haveHot) {
+            baseAxios.get('/getHotTag')
+                .then(({ data }) => {
+                    this.setState({
+                        hots: data.hots,
+                        loading: false
+                    })
+                })
+        }
     }
     render() {
+        const { hots } = this.state;
+        const { haveHot } = this.props;
         return (
             <div>
                 <div>
@@ -39,7 +64,7 @@ class Laside extends Component {
                         </div>
                         <div className="card-context">
                             <div className="card-name">Lemon | Limcong</div>
-                            <div className="card-tag"><i>准前端工程师</i></div>
+                            <div className="card-tag"><i>前端工程师</i></div>
                             <div className="card-mail">1301872983@qq.com</div>
                             <div className="card-smalltext">
                                 一个爱吉他爱篮球爱唱歌的95后伪全能程序猿一枚，对很多方向都略有涉猎，但是没有一项精通。希望通过我在这里分享的踩坑记录可以帮助一些人更好更快的掌握一些知识或者技巧。
@@ -61,18 +86,45 @@ class Laside extends Component {
                         </div>
                     </div>
 
-                        <div className="tag-cloud">
-                            <div className="tag-title">
-                                <span className='animated'><WechatOutlined/> 我的微信</span>
-                            </div>
-                            <div className="tag-2m">麻烦备注从博客扫码来的哦<img src={wx2} alt=""/></div>
+                    <div className="tag-cloud">
+                        <div className="tag-title">
+                            <span className='animated'><WechatOutlined /> 我的微信</span>
                         </div>
-                        <div className="tag-cloud">
-                            <div className="tag-title">
-                                <span className='animated'><QqOutlined/> 我的丘丘</span>
-                            </div>
-                            <div className="tag-2m tag-qq">麻烦备注从博客扫码来的哦<img src={qq2} alt=""/></div>
+                        <div className="tag-2m">麻烦备注从博客扫码来的哦<img src={wx2} alt="" /></div>
+                    </div>
+                    <div className="tag-cloud">
+                        <div className="tag-title">
+                            <span className='animated'><QqOutlined /> 我的丘丘</span>
                         </div>
+                        <div className="tag-2m tag-qq">麻烦备注从博客扫码来的哦<img src={qq2} alt="" /></div>
+                    </div>
+                    {haveHot &&
+                        <div className="hot-door">
+                            <div className="hot-title">
+                                <span className='animated'><FireOutlined /><br /> 热度榜</span>
+                            </div>
+                            <div className="hot-context">
+                                <ul className='hot-list'>
+                                    {hots.map(item => (
+                                        <li className='hot-item'>
+                                            <div>
+                                                <Link to={"/blogassign/article" + item.id}> {item.title}</Link>
+                                                <span>{item.fire}<FireOutlined /></span>
+                                            </div>
+                                            <div className='hot-brief'>
+                                                <img src={"https://myblog.city:4000" + item.imgsrc} />
+                                                <p>
+                                                    <Paragraph ellipsis={{ rows: 5, expandable: false }}>
+                                                        {item.brief}
+                                                    </Paragraph>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
 
