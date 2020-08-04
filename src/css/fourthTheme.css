@@ -108,34 +108,34 @@
     top: 0px !important;
     right: 10px !important;
   }
-}
-.interact-edit-wrap {
-  padding: 0 10px !important;
-}
-.friendLink-explain {
-  padding: 30px 10px !important;
-}
-.explain-thinks {
-  display: none !important;
-}
-.friendLink-explain {
-  overflow: hidden !important;
-}
-.explain-title {
-  width: 100% !important;
-  float: left !important;
-  overflow: hidden !important;
-}
-.explain-icons {
-  width: 50% !important;
-  float: left !important;
-  overflow: hidden !important;
-}
-.explain-context {
-  width: 100% !important;
-  float: left !important;
-  overflow: hidden !important;
-}
-.about-wrap {
-  padding: 5px 15px !important;
+  .interact-edit-wrap {
+    padding: 0 10px !important;
+  }
+  .friendLink-explain {
+    padding: 30px 10px !important;
+  }
+  .explain-thinks {
+    display: none !important;
+  }
+  .friendLink-explain {
+    overflow: hidden !important;
+  }
+  .explain-title {
+    width: 100% !important;
+    float: left !important;
+    overflow: hidden !important;
+  }
+  .explain-icons {
+    width: 50% !important;
+    float: left !important;
+    overflow: hidden !important;
+  }
+  .explain-context {
+    width: 100% !important;
+    float: left !important;
+    overflow: hidden !important;
+  }
+  .about-wrap {
+    padding: 5px 15px !important;
+  }
 }
