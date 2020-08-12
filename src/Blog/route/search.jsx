@@ -69,7 +69,7 @@ class home extends Component {
         const { blogList, loading } = this.state;
         return (
             <div>
-                {loading ? <LoadingOutlined /> : <Blog data={blogList} />}
+                {loading ? <LoadingOutlined /> : <Blog data={blogList} panelName="回到首页"/>}
             </div>
         )
     }

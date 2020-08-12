@@ -37,7 +37,6 @@ class App extends Component {
     }
   }
   render() {
-    const { timeStr } = this.state;
     return (
       <Router>
         <Helmet>
