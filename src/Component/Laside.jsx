@@ -1,17 +1,17 @@
 import React from 'react';
-import { Row, Col, Affix, Typography } from 'antd'
+import { Row, Col, Typography } from 'antd'
 import { Component } from 'react'
 import axios from 'axios'
-import { FireOutlined, LoadingOutlined, UnorderedListOutlined, ArrowRightOutlined, QqOutlined, GithubOutlined, WechatOutlined, ZhihuOutlined } from '@ant-design/icons'
-import banner from '../68.jpg';
-import headImg from '../headImg.jpg'
-import '../css/theme.css';
-import LazyLoad, { lazyload } from 'react-lazyload'
-import '../css/firstTheme.css'
-import '../css/secondTheme.css'
-import '../css/thirdTheme.css'
-import '../css/fourthTheme.css'
-import '../css/animate.min.css'
+import { FireOutlined, LoadingOutlined, QqOutlined, GithubOutlined, ZhihuOutlined } from '@ant-design/icons'
+import banner from '../img/68.jpg';
+import headImg from '../img/headImg.jpg'
+import LazyLoad from 'react-lazyload'
+import '../publicCSS/theme.css';
+import '../publicCSS/firstTheme.css'
+import '../publicCSS/secondTheme.css'
+import '../publicCSS/thirdTheme.css'
+import '../publicCSS/fourthTheme.css'
+import '../publicCSS/animate.min.css'
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import '../index.css';

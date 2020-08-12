@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Popover } from 'antd'
-import logo from '../LemonLogo.png';
-import '../css/theme.css';
-import '../css/firstTheme.css'
-import '../css/secondTheme.css'
-import '../css/thirdTheme.css'
-import '../css/fourthTheme.css'
-import '../css/animate.min.css'
+import logo from '../img/LemonLogo.png';
+import '../publicCSS/theme.css';
+import '../publicCSS/firstTheme.css'
+import '../publicCSS/secondTheme.css'
+import '../publicCSS/thirdTheme.css'
+import '../publicCSS/fourthTheme.css'
+import '../publicCSS/animate.min.css'
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import '../index.css'

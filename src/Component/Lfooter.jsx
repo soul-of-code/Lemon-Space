@@ -1,12 +1,11 @@
 import React from 'react';
 import { Component } from 'react'
-import '../css/theme.css';
-import '../css/firstTheme.css'
-import '../css/secondTheme.css'
-import '../css/thirdTheme.css'
-import '../css/fourthTheme.css'
-import '../css/animate.min.css'
-import zhCN from 'antd/es/locale/zh_CN';
+import '../publicCSS/theme.css';
+import '../publicCSS/firstTheme.css'
+import '../publicCSS/secondTheme.css'
+import '../publicCSS/thirdTheme.css'
+import '../publicCSS/fourthTheme.css'
+import '../publicCSS/animate.min.css'
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import '../index.css';

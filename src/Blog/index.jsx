@@ -4,14 +4,14 @@ import { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { FireFilled, BorderlessTableOutlined, LikeFilled } from '@ant-design/icons'
 import axios from 'axios'
-import Laside from './Laside'
+import Laside from '../Component/Laside'
 import LazyLoad from 'react-lazyload'
-import '../css/theme.css';
-import '../css/firstTheme.css'
-import '../css/secondTheme.css'
-import '../css/thirdTheme.css'
-import '../css/fourthTheme.css'
-import '../css/animate.min.css'
+import '../publicCSS/theme.css';
+import '../publicCSS/firstTheme.css'
+import '../publicCSS/secondTheme.css'
+import '../publicCSS/thirdTheme.css'
+import '../publicCSS/fourthTheme.css'
+import '../publicCSS/animate.min.css'
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import '../index.css';

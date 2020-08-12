@@ -2,18 +2,10 @@ import React from 'react';
 import { Component } from 'react'
 import { LoadingOutlined } from '@ant-design/icons'
 import axios from 'axios'
-import '../css/theme.css';
-import '../css/firstTheme.css'
-import '../css/secondTheme.css'
-import '../css/thirdTheme.css'
-import '../css/fourthTheme.css'
-import '../css/animate.min.css'
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
-import Blog from './Blog'
-import '../index.css';
+import Blog from '../index'
 import { withRouter} from 'react-router-dom'
-import { message } from 'antd';
 
 var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/blogView'
