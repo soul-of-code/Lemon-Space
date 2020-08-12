@@ -21,16 +21,14 @@ li{
 	--size: 150;
 	--unit: calc((var(--size) / 470) * 1vmin);
   }
-   
-   
-  .cat {
+.cat {
 	position: fixed;
 	bottom: 0;
     width: 200px;
     right: 0;
     transform: rotateY(180deg);
 	height: calc(100 * var(--unit));
-  }
+}
 .emoji-list{
     display: flex;
     flex-wrap: wrap;
@@ -105,6 +103,22 @@ header{
     width: 100%;
     .center{
         #main-left{
+            .blog-panel{
+                margin: 0 auto;
+                width: 120px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                font-size: 20px;
+                margin-top: 15px;
+                color:white;
+                border-radius: 20px;
+                background-color: @L_fontColor;
+                a{
+                    color:white;
+                    font-weight: 600;
+                }
+            }
             .blog-item{
                 background-color: rgba(255,255,255,0.8);
                 margin: 20px 0;
@@ -887,3 +901,4 @@ header{
         margin-bottom: 0;
     }
 }
+

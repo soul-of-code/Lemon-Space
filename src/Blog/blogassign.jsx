@@ -20,9 +20,6 @@ import codeblock from '../Component/codeblock'
 import {
     withRouter,
     Link,
-    BrowserRouter as Router,
-    Route,
-    Switch
 } from 'react-router-dom'
 
 var baseAxios = axios.create({
