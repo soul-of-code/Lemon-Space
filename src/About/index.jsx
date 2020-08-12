@@ -2,21 +2,17 @@ import React from 'react';
 import { Row, Col } from 'antd'
 import { Component } from 'react'
 import { Helmet } from 'react-helmet'
-import ReactMarkdown from 'react-markdown'
-import { FireOutlined, CommentOutlined, BorderlessTableOutlined, ArrowLeftOutlined } from '@ant-design/icons'
-import axios from 'axios'
-import Laside from '../base/baseAside'
-import moment from 'moment'
-import '../css/theme.css';
-import '../css/firstTheme.css'
-import '../css/secondTheme.css'
-import '../css/thirdTheme.css'
-import '../css/fourthTheme.css'
-import '../css/animate.min.css'
+import Laside from '../Component/baseAside'
+import '../publicCSS/theme.css';
+import '../publicCSS/firstTheme.css'
+import '../publicCSS/secondTheme.css'
+import '../publicCSS/thirdTheme.css'
+import '../publicCSS/fourthTheme.css'
+import '../publicCSS/animate.min.css'
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import '../index.css';
-import '../css/style.css'
+import '../publicCSS/style.css'
 import {
     withRouter,
     Link,

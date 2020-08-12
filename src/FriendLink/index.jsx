@@ -2,27 +2,21 @@ import React from 'react';
 import { Row, Col } from 'antd'
 import { Component } from 'react'
 import { Helmet } from 'react-helmet'
-import ReactMarkdown from 'react-markdown'
 import { CloseCircleFilled, CheckCircleFilled } from '@ant-design/icons'
 import LazyLoad from 'react-lazyload'
 import axios from 'axios'
-import Laside from '../base/baseAside'
-import moment from 'moment'
-import '../css/theme.css';
-import '../css/firstTheme.css'
-import '../css/secondTheme.css'
-import '../css/thirdTheme.css'
-import '../css/fourthTheme.css'
-import '../css/animate.min.css'
+import Laside from '../Component/baseAside'
+import '../publicCSS/theme.css';
+import '../publicCSS/firstTheme.css'
+import '../publicCSS/secondTheme.css'
+import '../publicCSS/thirdTheme.css'
+import '../publicCSS/fourthTheme.css'
+import '../publicCSS/animate.min.css'
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import '../index.css';
 import {
     withRouter,
-    Link,
-    BrowserRouter as Router,
-    Route,
-    Switch
 } from 'react-router-dom'
 var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/FriendView'
@@ -58,9 +52,6 @@ class about extends Component {
                             <div className="friendLink-explain">
                                 <div className="explain-title">
                                     友链申请说明
-                                </div>
-                                <div className="explain-thinks">
-                                    感谢Modest的Theme支持！
                                 </div>
                                 <div className="explain-icons">
                                     <div className="explain-icon-item red">

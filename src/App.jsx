@@ -1,34 +1,30 @@
 import React from 'react';
-import { Popover, BackTop } from 'antd'
+import { BackTop } from 'antd'
 import { Component } from 'react'
 import { Helmet } from 'react-helmet'
-import logo from './LemonLogo.png';
-import './css/theme.css';
-import './css/firstTheme.css'
-import './css/secondTheme.css'
-import './css/thirdTheme.css'
-import './css/fourthTheme.css'
-import './css/animate.min.css'
-import zhCN from 'antd/es/locale/zh_CN';
+import './publicCSS/theme.css';
+import './publicCSS/firstTheme.css'
+import './publicCSS/secondTheme.css'
+import './publicCSS/thirdTheme.css'
+import './publicCSS/fourthTheme.css'
+import './publicCSS/animate.min.css'
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import './index.css';
-import Lheader from './base/Lheader';
-import home from './blog/home'
-import search from './blog/search'
-import blogTag from './blog/blogtag'
-import blogAssign from './blog/blogassign'
-import FriendLink from './otherItem/FriendLink'
-import Interact from './otherItem/Interact'
-import Life from './otherItem/Life'
-import About from './otherItem/About'
-import Lfooter from './base/Lfooter'
+import Lheader from './Component/Lheader';
+import home from './Blog/route/home'
+import search from './Blog/route/search'
+import blogTag from './Blog/route/blogtag'
+import blogAssign from './Blog/blogassign'
+import FriendLink from './FriendLink'
+import Interact from './Interact'
+import Life from './Life'
+import About from './About'
+import Lfooter from './Component/Lfooter'
 import {
-  Link,
   BrowserRouter as Router,
   Route,
   Switch,
-  withRouter
 } from 'react-router-dom'
 
 /**
