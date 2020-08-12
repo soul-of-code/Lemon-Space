@@ -6,6 +6,7 @@ import { SmileOutlined } from '@ant-design/icons'
 import axios from 'axios'
 import Laside from '../base/baseAside'
 import inher from '../inherImg.jpg'
+import LazyLoad from 'react-lazyload'
 import moment from 'moment'
 import '../css/theme.css';
 import '../css/firstTheme.css'
@@ -32,10 +33,10 @@ class ExampleComment extends Component {
     constructor(props) {
         super(props)
     }
-
     render() {
         return (
             <Comment
+                className="animated fadeInRight"
                 actions={[<span key="comment-nested-reply-to">{this.props.Reply}</span>]}
                 author={<span>{this.props.name}</span>}
                 avatar={
@@ -345,6 +346,7 @@ class about extends Component {
                                     loading ? '' : (
                                         <div className="interact-list-context">
                                             {interactData.map(fitem => (
+                                                <LazyLoad height={400} className='animated fadeInRight'>
                                                 <ExampleComment
                                                     name={fitem.ismaster ? <span className='master'>博主</span> : fitem.name}
                                                     context={fitem.context}
@@ -368,6 +370,7 @@ class about extends Component {
                                                         </ExampleComment>
                                                     ))}
                                                 </ExampleComment>
+                                                </LazyLoad>
                                             ))}
                                         </div>
                                     )

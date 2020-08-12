@@ -807,9 +807,11 @@ header .center .header-menu-ph {
   font-size: 16px;
 }
 .wrap #main-right .hot-door .hot-context .hot-list .hot-item {
-  padding: 5px 25px;
+  padding: 5px 10px;
 }
 .wrap #main-right .hot-door .hot-context .hot-list .hot-item a {
+  font-weight: 600;
+  font-size: 14px;
   color: black;
   overflow: hidden;
   text-overflow: ellipsis;

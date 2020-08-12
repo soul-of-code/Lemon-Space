@@ -1,11 +1,12 @@
 import React from 'react';
-import { Row, Col, Affix ,Typography} from 'antd'
+import { Row, Col, Affix, Typography } from 'antd'
 import { Component } from 'react'
 import axios from 'axios'
 import { FireOutlined, LoadingOutlined, UnorderedListOutlined, ArrowRightOutlined, QqOutlined, GithubOutlined, WechatOutlined, ZhihuOutlined } from '@ant-design/icons'
 import banner from '../68.jpg';
 import headImg from '../headImg.jpg'
 import '../css/theme.css';
+import LazyLoad, { lazyload } from 'react-lazyload'
 import '../css/firstTheme.css'
 import '../css/secondTheme.css'
 import '../css/thirdTheme.css'
@@ -22,7 +23,7 @@ import {
 var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/blogView'
 })
-const {Paragraph} = Typography
+const { Paragraph } = Typography
 class Laside extends Component {
     constructor(props) {
         super(props);
@@ -65,7 +66,7 @@ class Laside extends Component {
             <div>
                 {loading ? <LoadingOutlined /> : (
                     <div>
-                        <div className='visiting-card'  >
+                        <div className='visiting-card animated fadeInRight'>
                             <div className="card-banner" style={{ background: 'url(' + banner + ') no-repeat top center' }}>
                                 <img src={headImg} alt="" />
                             </div>
@@ -92,7 +93,7 @@ class Laside extends Component {
                                 </Row>
                             </div>
                         </div>
-                        <div className="search-box">
+                        <div className="search-box animated fadeInRight">
                             <Row>
                                 <Col span={20}>
                                     <input placeholder="请输入搜索关键字" className='input-box' value={searchStr} onChange={this.handleChange}></input>
@@ -102,7 +103,7 @@ class Laside extends Component {
                                 </Col>
                             </Row>
                         </div>
-                        <div className="tag-cloud">
+                        <div className="tag-cloud animated fadeInRight">
                             <div className="tag-title">
                                 <span className='animated'>文章分类</span>
                             </div>
@@ -125,14 +126,15 @@ class Laside extends Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="hot-door">
+                        <div className="hot-door animated fadeInRight">
                             <div className="hot-title">
                                 <span className='animated'><FireOutlined /><br /> 热度榜</span>
                             </div>
                             <div className="hot-context">
                                 <ul className='hot-list'>
                                     {hots.map(item => (
-                                        <li className='hot-item'>
+                                        <LazyLoad height={400}>
+                                        <li className='hot-item animated fadeInRight'>
                                             <div>
                                                 <Link to={"/blogassign/article" + item.id}> {item.title}</Link>
                                                 <span>{item.fire}<FireOutlined /></span>
@@ -140,12 +142,13 @@ class Laside extends Component {
                                             <div className='hot-brief'>
                                                 <img src={"https://myblog.city:4000" + item.imgsrc} />
                                                 <p>
-                                                    <Paragraph ellipsis={{rows:5,expandable:false}}>
-                                                    {item.brief}
+                                                    <Paragraph ellipsis={{ rows: 5, expandable: false }}>
+                                                        {item.brief}
                                                     </Paragraph>
                                                 </p>
                                             </div>
                                         </li>
+                                        </LazyLoad>
                                     ))}
                                 </ul>
                             </div>
