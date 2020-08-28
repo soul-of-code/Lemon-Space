@@ -6,16 +6,9 @@ import { ClockCircleOutlined } from '@ant-design/icons'
 import axios from 'axios'
 import Laside from '../Component/baseAside'
 import moment from 'moment'
-import '../publicCSS/theme.css';
-import '../publicCSS/firstTheme.css'
-import '../publicCSS/secondTheme.css'
-import '../publicCSS/thirdTheme.css'
-import '../publicCSS/fourthTheme.css'
-import '../publicCSS/animate.min.css'
+import '../publicCSS/allTheme.css';
 import '../publicCSS/style.css'
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
-import '../index.css';
 import {
     withRouter,
 } from 'react-router-dom'
@@ -34,7 +27,6 @@ class about extends Component {
         }
     }
     componentWillMount() {
-        const { loading } = this.state;
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         this.setState({ loading: true });
         baseAxios.get('/getlife')
@@ -61,7 +53,7 @@ class about extends Component {
                 <div className="wrap-title">向着某一天终于要达到的那个终极目标迈步还不够，还要把每一步骤看成目标，使它作为步骤而起作用。——歌德</div>
                 <Row justify="space-between">
                     <Col xs={24} sm={24} md={24} lg={17} xl={17} id='main-left'>
-                        {loading ? "" : <div className="life-wrap">
+                        {!loading && <div className="life-wrap">
                             <div className="life-title-wrap">
                                 <div className="life-title">
                                     博客的生命周期
@@ -73,9 +65,9 @@ class about extends Component {
                                 </Timeline.Item>
                                 {timeLine.map(item => (
                                     <Timeline.Item color={item.color}>
-                                        <span className='time-context' style={{color:item.color}}>{item.href? (<a href={item.href}>{item.context}</a>):item.context}</span>
+                                        <span className='time-context' style={{ color: item.color }}>{item.href ? (<a href={item.href}>{item.context}</a>) : item.context}</span>
                                         <br />
-                                <span className='time-timer'>{moment(new Date(item.show_time*1000)).format('YYYY-MM-DD')}</span>
+                                        <span className='time-timer'>{moment(new Date(item.show_time * 1000)).format('YYYY-MM-DD')}</span>
                                     </Timeline.Item>
                                 ))}
                             </Timeline>

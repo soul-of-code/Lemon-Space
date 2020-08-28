@@ -6,15 +6,8 @@ import { FireOutlined, LoadingOutlined, QqOutlined, GithubOutlined, ZhihuOutline
 import banner from '../img/68.jpg';
 import headImg from '../img/headImg.jpg'
 import LazyLoad from 'react-lazyload'
-import '../publicCSS/theme.css';
-import '../publicCSS/firstTheme.css'
-import '../publicCSS/secondTheme.css'
-import '../publicCSS/thirdTheme.css'
-import '../publicCSS/fourthTheme.css'
-import '../publicCSS/animate.min.css'
+import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
-import '../index.css';
 import {
     withRouter,
     Link,

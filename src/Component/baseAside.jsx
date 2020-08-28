@@ -8,15 +8,8 @@ import wx2 from '../img/wx2.png'
 import { FireOutlined, QqOutlined, GithubOutlined, WechatOutlined, ZhihuOutlined } from '@ant-design/icons'
 import banner from '../img/68.jpg';
 import headImg from '../img/headImg.jpg'
-import '../publicCSS/theme.css';
-import '../publicCSS/firstTheme.css'
-import '../publicCSS/secondTheme.css'
-import '../publicCSS/thirdTheme.css'
-import '../publicCSS/fourthTheme.css'
-import '../publicCSS/animate.min.css'
+import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
-import '../index.css';
 import {
     withRouter,
     Link,
@@ -50,7 +43,7 @@ class Laside extends Component {
         }
     }
     render() {
-        const { hots } = this.state;
+        const { hots, loading } = this.state;
         const { haveHot } = this.props;
         return (
             <div>
@@ -95,7 +88,7 @@ class Laside extends Component {
                         </div>
                         <div className="tag-2m tag-qq">麻烦备注从博客扫码来的哦<img src={qq2} alt="" /></div>
                     </div>
-                    {haveHot &&
+                    {(haveHot && !loading) &&
                         <div className="hot-door animated fadeInRight">
                             <div className="hot-title">
                                 <span className='animated'><FireOutlined /><br /> 热度榜</span>

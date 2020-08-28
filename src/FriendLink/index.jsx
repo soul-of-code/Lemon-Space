@@ -6,15 +6,8 @@ import { CloseCircleFilled, CheckCircleFilled } from '@ant-design/icons'
 import LazyLoad from 'react-lazyload'
 import axios from 'axios'
 import Laside from '../Component/baseAside'
-import '../publicCSS/theme.css';
-import '../publicCSS/firstTheme.css'
-import '../publicCSS/secondTheme.css'
-import '../publicCSS/thirdTheme.css'
-import '../publicCSS/fourthTheme.css'
-import '../publicCSS/animate.min.css'
+import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
-import '../index.css';
 import {
     withRouter,
 } from 'react-router-dom'
@@ -24,7 +17,6 @@ var baseAxios = axios.create({
 
 class about extends Component {
     constructor(props) {
-        // this.props.match.params.name 获取props
         super(props);
         this.state = {
             friendlist: [],
@@ -47,7 +39,7 @@ class about extends Component {
                 </Helmet>
                 <div className="wrap-title">友谊像清晨的雾一样纯洁，奉承并不能得到友谊，友谊只能用忠实去巩固它。—— 马克思</div>
                 <Row justify="space-between">
-                    {loading ? <span></span> : (<Col xs={24} sm={24} md={24} lg={17} xl={17} id='main-left'>
+                    {!loading && (<Col xs={24} sm={24} md={24} lg={17} xl={17} id='main-left'>
                         <div className="friendLink-wrap">
                             <div className="friendLink-explain">
                                 <div className="explain-title">
@@ -104,7 +96,7 @@ class about extends Component {
                             </div>
                             <div className="friends-title">身边的朋友</div>
                             <Row className="friends-wrap" justify="space-between">
-                                {friendlist.map(item => item.tag == 0 ? (
+                                {friendlist.map(item => item.tag == 0 && (
                                     <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
                                         <LazyLoad height={300}>
                                             <a href={item.url} target="_blank" className='animated bounceIn'>
@@ -114,11 +106,11 @@ class about extends Component {
                                             </a>
                                         </LazyLoad>
                                     </Col>
-                                ) : "")}
+                                ))}
                             </Row>
                             <div className="friends-title">远方的大佬</div>
                             <Row className="friends-wrap" justify="space-between">
-                                {friendlist.map(item => item.tag == 1 ? (
+                                {friendlist.map(item => item.tag == 1 && (
                                     <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
                                         <LazyLoad height={300}>
                                             <a href={item.url} target="_blank" className='animated bounceIn'>
@@ -128,11 +120,11 @@ class about extends Component {
                                             </a>
                                         </LazyLoad>
                                     </Col>
-                                ) : "")}
+                                ))}
                             </Row>
                             <div className="friends-title">顶级大佬</div>
                             <Row className="friends-wrap" justify="space-between">
-                                {friendlist.map(item => item.tag == 2 ? (
+                                {friendlist.map(item => item.tag == 2 && (
                                     <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
                                         <LazyLoad height={300}>
                                             <a href={item.url} target="_blank" className='animated bounceIn'>
@@ -142,7 +134,7 @@ class about extends Component {
                                             </a>
                                         </LazyLoad>
                                     </Col>
-                                ) : "")}
+                                ))}
                             </Row>
                         </div>
                     </Col>)}

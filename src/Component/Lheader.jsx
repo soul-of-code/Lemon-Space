@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Popover } from 'antd'
 import logo from '../img/LemonLogo.png';
-import '../publicCSS/theme.css';
-import '../publicCSS/firstTheme.css'
-import '../publicCSS/secondTheme.css'
-import '../publicCSS/thirdTheme.css'
-import '../publicCSS/fourthTheme.css'
-import '../publicCSS/animate.min.css'
+import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
-import '../index.css'
 import { UpSquareOutlined, DownSquareOutlined } from '@ant-design/icons'
 import {
   Link,
-  BrowserRouter as Router,
-  Route,
-  Switch,
   withRouter
 } from 'react-router-dom'
 

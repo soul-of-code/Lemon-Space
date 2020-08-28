@@ -8,15 +8,8 @@ import Laside from '../Component/baseAside'
 import inher from '../img/inherImg.jpg'
 import LazyLoad from 'react-lazyload'
 import moment from 'moment'
-import '../publicCSS/theme.css';
-import '../publicCSS/firstTheme.css'
-import '../publicCSS/secondTheme.css'
-import '../publicCSS/thirdTheme.css'
-import '../publicCSS/fourthTheme.css'
-import '../publicCSS/animate.min.css'
+import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
-import '../index.css';
 import '../publicCSS/style.css'
 import {
     withRouter,
@@ -340,33 +333,33 @@ class about extends Component {
                                     留言列表
                                 </div>
                                 {
-                                    loading ? '' : (
+                                    !loading && (
                                         <div className="interact-list-context">
                                             {interactData.map(fitem => (
                                                 <LazyLoad height={400} className='animated fadeInRight'>
-                                                <ExampleComment
-                                                    name={fitem.ismaster ? <span className='master'>博主</span> : fitem.name}
-                                                    context={fitem.context}
-                                                    headimg={`http://q4.qlogo.cn/g?b=qq&nk=${fitem.email}&s=3`}
-                                                    Reply={(
-                                                        <span>{moment(new Date(fitem.create_time * 1000)).format('YYYY年MM月DD日 HH:mm:ss')}
-                                                            {fitem.canremark ? <a href="#reply-a" style={{ marginLeft: "10px" }}
-                                                                onClick={() => this.handleReply(fitem)}>回复</a>
-                                                                : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
-                                                    {fitem.child_act.map(citem => (
-                                                        <ExampleComment
-                                                            name={<span>{(citem.ismaster ? <span className='master'>博主</span> : citem.name)}  回复  {(citem.fismaster ? <span className='master'>博主</span> : citem.fname)}  ：</span>}
-                                                            context={citem.context}
-                                                            headimg={`http://q4.qlogo.cn/g?b=qq&nk=${citem.email}&s=3`}
-                                                            Reply={(
-                                                                <span>{moment(new Date(citem.create_time * 1000)).format('YYYY年MM月DD日 HH:mm:ss')}
-                                                                    {citem.canremark ? <a href="#reply-a" style={{ marginLeft: "10px" }}
-                                                                        onClick={() => this.handleReply(fitem, citem)}>回复</a>
-                                                                        : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
+                                                    <ExampleComment
+                                                        name={fitem.ismaster ? <span className='master'>博主</span> : fitem.name}
+                                                        context={fitem.context}
+                                                        headimg={`http://q4.qlogo.cn/g?b=qq&nk=${fitem.email}&s=3`}
+                                                        Reply={(
+                                                            <span>{moment(new Date(fitem.create_time * 1000)).format('YYYY年MM月DD日 HH:mm:ss')}
+                                                                {fitem.canremark ? <a href="#reply-a" style={{ marginLeft: "10px" }}
+                                                                    onClick={() => this.handleReply(fitem)}>回复</a>
+                                                                    : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
+                                                        {fitem.child_act.map(citem => (
+                                                            <ExampleComment
+                                                                name={<span>{(citem.ismaster ? <span className='master'>博主</span> : citem.name)}  回复  {(citem.fismaster ? <span className='master'>博主</span> : citem.fname)}  ：</span>}
+                                                                context={citem.context}
+                                                                headimg={`http://q4.qlogo.cn/g?b=qq&nk=${citem.email}&s=3`}
+                                                                Reply={(
+                                                                    <span>{moment(new Date(citem.create_time * 1000)).format('YYYY年MM月DD日 HH:mm:ss')}
+                                                                        {citem.canremark ? <a href="#reply-a" style={{ marginLeft: "10px" }}
+                                                                            onClick={() => this.handleReply(fitem, citem)}>回复</a>
+                                                                            : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
 
-                                                        </ExampleComment>
-                                                    ))}
-                                                </ExampleComment>
+                                                            </ExampleComment>
+                                                        ))}
+                                                    </ExampleComment>
                                                 </LazyLoad>
                                             ))}
                                         </div>
@@ -378,7 +371,7 @@ class about extends Component {
                         </div>
                     </Col>
                     <Col xs={0} sm={0} md={0} lg={7} xl={7} id='main-right'>
-                        <Laside haveHot = {true} />
+                        <Laside haveHot={true} />
                     </Col>
                 </Row>
 

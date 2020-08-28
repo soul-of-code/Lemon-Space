@@ -1,14 +1,7 @@
 import React from 'react';
 import { Component } from 'react'
-import '../publicCSS/theme.css';
-import '../publicCSS/firstTheme.css'
-import '../publicCSS/secondTheme.css'
-import '../publicCSS/thirdTheme.css'
-import '../publicCSS/fourthTheme.css'
-import '../publicCSS/animate.min.css'
+import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
-import '../index.css';
 /**
  * 枢纽
  */
@@ -38,7 +31,7 @@ class App extends Component {
 
             <div className="app-footer">
                 <p>本博客由React + Node + Ant Design联合驱动,感谢蚂蚁金服的慷慨开源。 <span style={{ color: 'rgb(252,192,0)' }}>已上线时间：{timeStr}</span></p>
-                <p>Copyright © 2019-2020 Lemon All Rights Reserved V.1.0.1 备案号 <a href="http://www.beian.miit.gov.cn/">黑ICP备19003625号-2</a></p>
+                <p>Copyright © 2019-2020 Lemon All Rights Reserved V.1.0.3 备案号 <a href="http://www.beian.miit.gov.cn/">黑ICP备19003625号-2</a></p>
             </div>
         )
     }

@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { LoadingOutlined } from '@ant-design/icons'
 import axios from 'axios'
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
 import Blog from '../index'
 import { withRouter } from 'react-router-dom'
 
