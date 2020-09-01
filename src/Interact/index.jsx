@@ -73,7 +73,7 @@ class about extends Component {
         context = context.split(']').join('@lmCLeMon123@').split('[').join('@lmCLeMon123@');
 
         const arr = context.split('@lmCLeMon123@').reduce((pre, cur) => {
-            let emojiId = this.isEmoji(cur);
+            const emojiId = this.isEmoji(cur);
             pre.push((emojiId === -1) ? cur : <img src={'https://myblog.city:4000/emoji/' + emojiId + ".gif"} alt="" />)
             return pre;
         }, [])
