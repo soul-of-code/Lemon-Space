@@ -7,6 +7,7 @@ import axios from 'axios'
 import Laside from '../Component/baseAside'
 import inher from '../img/inherImg.jpg'
 import LazyLoad from 'react-lazyload'
+import Remarker from '../Component/Remarker'
 import moment from 'moment'
 import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
@@ -19,38 +20,12 @@ var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/interactView'
 })
 
-class ExampleComment extends Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        return (
-            <Comment
-                className="animated fadeInRight"
-                actions={[<span key="comment-nested-reply-to">{this.props.Reply}</span>]}
-                author={<span>{this.props.name}</span>}
-                avatar={
-                    <Avatar
-                        src={this.props.headimg}
-                        alt={this.props.name}
-                    />
-                }
-                content={
-                    <p>
-                        {this.props.context}
-                    </p>
-                }
-            >
-                {this.props.children}
-            </Comment>
-        );
-    }
-}
 class about extends Component {
     addRef = React.createRef();//处理添加数据的表单
+
     mscount = true;
+
     constructor(props) {
-        // this.props.match.params.name 获取props
         super(props);
         this.state = {
             interactData: [],
@@ -64,21 +39,16 @@ class about extends Component {
             inputValue: ""
         }
     }
+
     componentWillMount() {
         this.setState({ loading: true })
         baseAxios.get('/getInteract')
             .then(res => {
                 var { inter, emoji } = res.data
+                //需要先把emoji存入state供后面的方法使用
                 this.setState({ emoji: emoji })
-                for (let i = 0; i < inter.length; i++) {
-                    inter[i].context = this.editContext(inter[i].context);
-                    if (inter[i].child_act.length != 0)
-                        for (let j = 0; j < inter[i].child_act.length; j++) {
-                            inter[i].child_act[j].context = this.editContext(inter[i].child_act[j].context);
-                        }
-                }
                 this.setState({
-                    interactData: inter,
+                    interactData: this.createEditArray(inter),
                     loading: false
                 })
             })
@@ -86,28 +56,41 @@ class about extends Component {
                 console.log(errInfo)
             })
     }
-    editContext = context => {
-        const { emoji } = this.state;
-        context = context.split(']').join('@lmCLeMon123@');
-        context = context.split('[').join('@lmCLeMon123@');
-        var arr = context.split('@lmCLeMon123@');
-        for (let e = 0; e < emoji.length; e++) {
-            for (let a = 0; a < arr.length; a++) {
-                if (arr[a] == emoji[e].name) {
-                    arr[a] = <img src={'https://myblog.city:4000/emoji/' + emoji[e].id + ".gif"} alt="" />
-                }
-            }
+
+    createEditArray = createArr => createArr.reduce((pre, cur) => {
+        cur.context = this.editContext(cur.context)
+
+        if ('child_act' in cur) {
+            if (cur.child_act.length) cur.child_act = this.createEditArray(cur.child_act);
         }
+        pre.push(cur);
+
+        return pre;
+    }, [])
+
+    //处理emoji的算法
+    editContext = context => {
+        context = context.split(']').join('@lmCLeMon123@').split('[').join('@lmCLeMon123@');
+
+        const arr = context.split('@lmCLeMon123@').reduce((pre, cur) => {
+            let emojiId = this.isEmoji(cur);
+            pre.push((emojiId === -1) ? cur : <img src={'https://myblog.city:4000/emoji/' + emojiId + ".gif"} alt="" />)
+            return pre;
+        }, [])
+
         return (
             <span>
-                {
-                    arr.map(item => (
-                        item
-                    ))
-                }
+                {arr.map(item => item)}
             </span>
         )
     }
+
+    isEmoji = context => {
+        const { emoji } = this.state;
+        const ids = emoji.filter(e => context == e.name)
+        return ids.length > 0 ? ids[0].id : -1;
+    }
+
     addRow = () => {
         const { isClick, replyitem, isReply } = this.state
         if (isClick) {   //如果为true 开始执行
@@ -134,52 +117,34 @@ class about extends Component {
                     addList.canremark = 1;
                 }
                 addList.create_time = new Date().getTime() / 1000;
+                const queryURL = isReply ? '/addInteractcmt' : '/addInteract'
                 if (isReply) {
                     addList.fid = replyitem.id;
                     addList.fname = replyitem.name;
                     addList.femail = replyitem.email;
                     addList.fismaster = replyitem.ismaster;
-                    baseAxios.get('/addInteractcmt', { params: addList })
-                        .then(res => {
-                            if (res.data.err) {
-                                message.error(res.data.err)
-                                console.log('进来了')
-                            }
-                            else {
-                                this.setState({ isReply: false, replyitem: {} });
-                                message.success('留言成功！');
-                                message.success('留言成功！');
-                                setTimeout(() => window.location.reload(), 1000);
-                            }
-
-                        })
-                        .catch(errInfo => {
-                            const Mythis = this;
-                            setTimeout(() => Mythis.setState({ isClick: true }), 1000);
-                        })
                 }
-                else
-                    baseAxios.get('/addInteract', { params: addList })
-                        .then(res => {
-                            if (res.data.err) {
-                                message.error(res.data.err)
-                                console.log('进来了')
-                            }
-                            else {
-                                this.setState({ isReply: false, replyitem: {} });
-                                message.success('留言成功！');
-                                message.success('留言成功！');
-                                setTimeout(() => window.location.reload(), 1000);
-                            }
+                baseAxios.get(queryURL, { params: addList })
+                    .then(res => {
+                        if (res.data.err) {
+                            message.error(res.data.err)
+                        }
+                        else {
+                            this.setState({ isReply: false, replyitem: {} });
+                            message.success('留言成功！');
+                            message.success('留言成功！');
+                            setTimeout(() => window.location.reload(), 1000);
+                        }
 
-                        })
-                        .catch(errInfo => {
-                            const Mythis = this;
-                            setTimeout(() => Mythis.setState({ isClick: true }), 1000);
-                        })
+                    })
+                    .catch(errInfo => {
+                        const Mythis = this;
+                        setTimeout(() => Mythis.setState({ isClick: true }), 1000);
+                    })
             })
         }
     }
+
     handleMail = (e) => {
         if (e.target.value.indexOf('@') != -1) {
             this.setState({ headimgSrc: `http://q4.qlogo.cn/g?b=qq&nk=${e.target.value}&s=3` })
@@ -188,6 +153,7 @@ class about extends Component {
             this.setState({ headimgSrc: '' })
         }
     }
+
     handleReply = (fitem, citem) => {
         var data = { ...fitem };
         if (citem) {
@@ -198,6 +164,7 @@ class about extends Component {
         }
         this.setState({ isReply: true, replyitem: data })
     }
+
     handleCancel = () => {
         this.setState({ isReply: false, replyitem: {} })
     }
@@ -205,12 +172,14 @@ class about extends Component {
     handleEmojiVisibleChange = visible => {
         this.setState({ emojiVisible: visible })
     }
+
     handleAddEmoji = name => {
         const { inputValue } = this.state
         var str = "[" + name + "]";
         this.addRef.current.setFieldsValue({ context: inputValue + str });
         this.setState({ inputValue: inputValue + str })
     }
+
     handleInput = e => {
         const { inputValue } = this.state;
         this.setState({ inputValue: e.target.value });
@@ -337,7 +306,7 @@ class about extends Component {
                                         <div className="interact-list-context">
                                             {interactData.map(fitem => (
                                                 <LazyLoad height={400} className='animated fadeInRight'>
-                                                    <ExampleComment
+                                                    <Remarker
                                                         name={fitem.ismaster ? <span className='master'>博主</span> : fitem.name}
                                                         context={fitem.context}
                                                         headimg={`http://q4.qlogo.cn/g?b=qq&nk=${fitem.email}&s=3`}
@@ -347,7 +316,7 @@ class about extends Component {
                                                                     onClick={() => this.handleReply(fitem)}>回复</a>
                                                                     : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
                                                         {fitem.child_act.map(citem => (
-                                                            <ExampleComment
+                                                            <Remarker
                                                                 name={<span>{(citem.ismaster ? <span className='master'>博主</span> : citem.name)}  回复  {(citem.fismaster ? <span className='master'>博主</span> : citem.fname)}  ：</span>}
                                                                 context={citem.context}
                                                                 headimg={`http://q4.qlogo.cn/g?b=qq&nk=${citem.email}&s=3`}
@@ -357,9 +326,9 @@ class about extends Component {
                                                                             onClick={() => this.handleReply(fitem, citem)}>回复</a>
                                                                             : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
 
-                                                            </ExampleComment>
+                                                            </Remarker>
                                                         ))}
-                                                    </ExampleComment>
+                                                    </Remarker>
                                                 </LazyLoad>
                                             ))}
                                         </div>
