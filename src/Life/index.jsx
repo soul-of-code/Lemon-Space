@@ -35,7 +35,6 @@ class about extends Component {
                     message.error(res.data.err);
                     return
                 }
-                console.log(res.data)
                 this.setState({
                     timeLine: res.data,
                     loading: false

@@ -34,7 +34,6 @@ class Laside extends Component {
             .then(({ data }) => {
                 var tags = data.tags;
                 var hots = data.hots;
-                console.log(hots);
                 var path = window.location.pathname.split('/');//解析path
                 var action = 0;
                 if (path[1] == 'blog') {

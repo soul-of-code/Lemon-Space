@@ -8,7 +8,6 @@ class codeblock extends Component{
         super(props);
     }
     render(){
-        console.log(this.props.children)
         return(
             <ReactHighLight className='javascript'>
                 {this.props.value}

@@ -26,7 +26,6 @@ class home extends Component {
 
         baseAxios.get('/getBlogBySearch',{params:{tag:str}})
             .then(data => {
-                console.log(data.data);
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
                 if(data.data.nullmsg){
                     this.setState({loading: false });
@@ -48,7 +47,6 @@ class home extends Component {
 
         baseAxios.get('/getBlogBySearch',{params:{tag:str}})
             .then(data => {
-                console.log(data.data);
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
                 if(data.data.nullmsg){
                     this.setState({loading: false });
