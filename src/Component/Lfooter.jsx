@@ -12,7 +12,7 @@ class App extends Component {
             timeStr: ""
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         var thediv = (timespan) => {
             var result = Math.floor((new Date() - new Date(timespan)) / 3600000 / 24);
             var result2 = Math.floor((new Date() - new Date(timespan)) / 1000 / 60 / 60 % 24);

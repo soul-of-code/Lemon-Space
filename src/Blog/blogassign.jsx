@@ -31,7 +31,7 @@ class blogAssign extends Component {
             isAssist: false
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         this.setState({ loading: true });
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         var { art } = this.props.match.params;

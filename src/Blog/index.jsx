@@ -24,7 +24,7 @@ class Blog extends Component {
             blogList: []
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         this.setState({ blogList: [] });
         this.setState({ blogList: this.props.data });
     }

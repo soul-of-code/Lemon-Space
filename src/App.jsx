@@ -23,13 +23,7 @@ import {
 /**
  * 枢纽
  */
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
-  render() {
+function App(){
     return (
       <Router>
         <Helmet>
@@ -59,7 +53,6 @@ class App extends Component {
         </svg>
       </Router>
     )
-  }
 }
 
 

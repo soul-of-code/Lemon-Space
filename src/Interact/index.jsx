@@ -40,7 +40,7 @@ class about extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({ loading: true })
         baseAxios.get('/getInteract')
             .then(res => {
@@ -59,7 +59,6 @@ class about extends Component {
 
     createEditArray = createArr => createArr.reduce((pre, cur) => {
         cur.context = this.editContext(cur.context)
-
         if ('child_act' in cur) {
             if (cur.child_act.length) cur.child_act = this.createEditArray(cur.child_act);
         }

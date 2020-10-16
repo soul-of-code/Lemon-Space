@@ -28,7 +28,7 @@ class Laside extends Component {
             searchStr: ""
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         this.setState({ loading: true });
         baseAxios.get('/getHotTag')
             .then(({ data }) => {

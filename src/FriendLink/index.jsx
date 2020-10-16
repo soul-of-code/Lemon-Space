@@ -23,7 +23,7 @@ class about extends Component {
             loading: true
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         this.setState({ loading: true })
         baseAxios.get('/getfriends')
             .then(res => {

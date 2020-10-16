@@ -29,7 +29,7 @@ class Laside extends Component {
             loading: true,
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         const { haveHot } = this.props;
         this.setState({ loading: true });
         if (haveHot) {
