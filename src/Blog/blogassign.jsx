@@ -95,7 +95,7 @@ class blogAssign extends Component {
                                     </div>
                                     <div className='md-icon-list'>
                                         <span className="md-icon">
-                                            <BorderlessTableOutlined /> {moment(new Date(Art.time * 1000)).format('YYYY年MM月DD日 hh:mm')}
+                                            <BorderlessTableOutlined /> {moment(new Date(Art.time * 1000)).format('YYYY年MM月DD日 HH:mm')}
                                         </span>
                                         <span className="md-icon">
                                             <BorderlessTableOutlined /> {Art.tagName}
