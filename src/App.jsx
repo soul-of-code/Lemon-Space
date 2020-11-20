@@ -1,6 +1,5 @@
 import React from 'react';
 import { BackTop } from 'antd'
-import { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import './publicCSS/allTheme.css'
 import 'moment/locale/zh-cn';

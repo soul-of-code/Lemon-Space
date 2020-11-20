@@ -20,7 +20,7 @@ var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/blogView'
 })
 
-window.scroll = 0
+window.scroll = 0;
 class blogAssign extends Component {
     constructor(props) {
         // this.props.match.params.name 获取props
