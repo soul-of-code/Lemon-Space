@@ -1,42 +1,46 @@
-import React from 'react';
-import { Component } from 'react'
-import { LoadingOutlined } from '@ant-design/icons'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import 'moment/locale/zh-cn';
 import Blog from '../index'
-import { withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { LemonLoading } from '../../Component/loader'
 
 var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/blogView'
 })
 
-class home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            blogList: [],
-            loading: true
-        }
+function Home() {
+    const [state, setState] = useState({
+        blogList: [],
+        loading: true
+    })
+    const setLoading = (loading) => {
+        setState(v => ({
+            ...v,
+            loading
+        }))
     }
 
-    componentWillMount() {
+    useEffect(() => {
+        setLoading(true);
+
         baseAxios.get('/getBlog')
-            .then(data => {
-                data.data.forEach(item => {
-                    item.time = new Date(item.time*1000)
+            .then((data) => {
+                const { data: Data } = data;
+                Data.forEach(item => {
+                    item.time = new Date(item.time * 1000)
                 })
-                this.setState({ blogList: data.data, loading: false });
+                setState({ blogList: Data, loading: false });
             })
-    }
+    }, [])
 
-    render() {
-        const { blogList, loading } = this.state;
-        return (
-            <div>
-                {loading ? <LoadingOutlined /> : <Blog data={blogList} />}
-            </div>
-        )
-    }
+    const { blogList, loading } = state;
+    return (
+        <LemonLoading loading={loading}>
+            <Blog data={blogList} />
+        </LemonLoading>
+    )
 }
 
-export default withRouter( home);
+
+export default withRouter(Home);

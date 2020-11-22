@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
-import { LoadingOutlined } from '@ant-design/icons'
+import { LemonLoading } from '../../Component/loader'
 import axios from 'axios'
 import 'moment/locale/zh-cn';
 import Blog from '../index'
@@ -37,9 +37,9 @@ function Home(props) {
 
     const { blogList, loading } = state;
     return (
-        <div>
-            {loading ? <LoadingOutlined /> : <Blog data={blogList} panelName="回到首页" />}
-        </div>
+        <LemonLoading loading={loading}>
+            <Blog data={blogList} panelName="回到首页" />
+        </LemonLoading>
     )
 }
 

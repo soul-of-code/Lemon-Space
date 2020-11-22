@@ -1,75 +1,49 @@
-import React from 'react';
-import { Component } from 'react'
-import { LoadingOutlined } from '@ant-design/icons'
+import React, { useState, useEffect } from 'react';
+import { LemonLoading } from '../../Component/loader'
 import axios from 'axios'
 import 'moment/locale/zh-cn';
 import Blog from '../index'
-import { withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { message } from 'antd';
 
 var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/blogView'
 })
 
-class home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            blogList: [],
-            loading: true
-        }
-    }
+function Home(props) {
+    const [state, setState] = useState({
+        blogList: [],
+        loading: true,
+    })
+    const setLoading = (loading) => setState(v => ({ ...v, loading }))
 
-    componentWillMount() {
-        this.setState({loading: true });
-        var {str} = this.props.match.params;
-
-        baseAxios.get('/getBlogBySearch',{params:{tag:str}})
+    useEffect(() => {
+        setLoading(true);
+        var { str } = props.match.params;
+        baseAxios.get('/getBlogBySearch', { params: { tag: str } })
             .then(data => {
+                const { data: Data } = data;
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
-                if(data.data.nullmsg){
-                    this.setState({loading: false });
+                if (Data.nullmsg) {
+                    setLoading(false)
                     message.error('该类别没有文章，即将返回首页');
                     message.error('该类别没有文章，即将返回首页');
                     window.location.href = '/'
                     return
                 }
-                data.data.forEach(item => {
-                    item.time = new Date(item.time*1000)
+                Data.forEach(item => {
+                    item.time = new Date(item.time * 1000)
                 })
-                this.setState({ blogList: data.data, loading: false });
+                setState({ blogList: Data, loading: false });
             })
-    }
+    }, [props.location.pathname])
 
-    componentWillReceiveProps(newProps){
-        this.setState({loading: true });
-        var {str} = newProps.match.params;
-
-        baseAxios.get('/getBlogBySearch',{params:{tag:str}})
-            .then(data => {
-                document.body.scrollTop = document.documentElement.scrollTop = 0;
-                if(data.data.nullmsg){
-                    this.setState({loading: false });
-                    message.error('该类别没有文章，即将返回首页');
-                    message.error('该类别没有文章，即将返回首页');
-                    window.location.href = '/'
-                    return
-                }
-                data.data.forEach(item => {
-                    item.time = new Date(item.time*1000)
-                })
-                this.setState({ blogList: data.data, loading: false });
-            })
-    }
-
-    render() {
-        const { blogList, loading } = this.state;
-        return (
-            <div>
-                {loading ? <LoadingOutlined /> : <Blog data={blogList} panelName="回到首页"/>}
-            </div>
-        )
-    }
+    const { blogList, loading } = state;
+    return (
+        <LemonLoading loading={loading}>
+            <Blog data={blogList} panelName="回到首页" />
+        </LemonLoading>
+    )
 }
 
-export default withRouter( home);
+export default withRouter(Home);
