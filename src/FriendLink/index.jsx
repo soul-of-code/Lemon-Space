@@ -1,19 +1,21 @@
 import React from 'react';
-import { Row, Col } from 'antd'
-import { Component } from 'react'
-import { Helmet } from 'react-helmet'
-import { CloseCircleFilled, CheckCircleFilled } from '@ant-design/icons'
-import LazyLoad from 'react-lazyload'
-import axios from 'axios'
-import Laside from '../Component/baseAside'
+import { Row, Col } from 'antd';
+import { Component } from 'react';
+import { Helmet } from 'react-helmet';
+import { CloseCircleFilled, CheckCircleFilled } from '@ant-design/icons';
+import LazyLoad from 'react-lazyload';
+import axios from 'axios';
+import Laside from '../Component/baseAside';
 import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
 import {
     withRouter,
-} from 'react-router-dom'
+} from 'react-router-dom';
+import { LemonLoading } from '../Component/loader';
 var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/FriendView'
 })
+
 
 class about extends Component {
     constructor(props) {
@@ -39,7 +41,7 @@ class about extends Component {
                 </Helmet>
                 <div className="wrap-title">友谊像清晨的雾一样纯洁，奉承并不能得到友谊，友谊只能用忠实去巩固它。—— 马克思</div>
                 <Row justify="space-between">
-                    {!loading && (<Col xs={24} sm={24} md={24} lg={17} xl={17} id='main-left'>
+                    <Col xs={24} sm={24} md={24} lg={17} xl={17} id='main-left'>
                         <div className="friendLink-wrap">
                             <div className="friendLink-explain">
                                 <div className="explain-title">
@@ -94,50 +96,52 @@ class about extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="friends-title">身边的朋友</div>
-                            <Row className="friends-wrap" justify="space-between">
-                                {friendlist.map(item => item.tag == 0 && (
-                                    <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
-                                        <LazyLoad height={300}>
-                                            <a href={item.url} target="_blank" className='animated bounceIn'>
-                                                <img src={item.icon} alt="" />
-                                                <h2>{item.name}</h2>
-                                                <p>{item.fdescribe}</p>
-                                            </a>
-                                        </LazyLoad>
-                                    </Col>
-                                ))}
-                            </Row>
-                            <div className="friends-title">远方的大佬</div>
-                            <Row className="friends-wrap" justify="space-between">
-                                {friendlist.map(item => item.tag == 1 && (
-                                    <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
-                                        <LazyLoad height={300}>
-                                            <a href={item.url} target="_blank" className='animated bounceIn'>
-                                                <img src={item.icon} alt="" />
-                                                <h2>{item.name}</h2>
-                                                <p>{item.fdescribe}</p>
-                                            </a>
-                                        </LazyLoad>
-                                    </Col>
-                                ))}
-                            </Row>
-                            <div className="friends-title">顶级大佬</div>
-                            <Row className="friends-wrap" justify="space-between">
-                                {friendlist.map(item => item.tag == 2 && (
-                                    <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
-                                        <LazyLoad height={300}>
-                                            <a href={item.url} target="_blank" className='animated bounceIn'>
-                                                <img src={item.icon} alt="" />
-                                                <h2>{item.name}</h2>
-                                                <p>{item.fdescribe}</p>
-                                            </a>
-                                        </LazyLoad>
-                                    </Col>
-                                ))}
-                            </Row>
+                            <LemonLoading loading={loading}>
+                                <div className="friends-title">身边的朋友</div>
+                                <Row className="friends-wrap" justify="space-between">
+                                    {friendlist.map(item => item.tag == 0 && (
+                                        <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
+                                            <LazyLoad height={300}>
+                                                <a href={item.url} target="_blank" className='animated bounceIn'>
+                                                    <img src={item.icon} alt="" />
+                                                    <h2>{item.name}</h2>
+                                                    <p>{item.fdescribe}</p>
+                                                </a>
+                                            </LazyLoad>
+                                        </Col>
+                                    ))}
+                                </Row>
+                                <div className="friends-title">远方的大佬</div>
+                                <Row className="friends-wrap" justify="space-between">
+                                    {friendlist.map(item => item.tag == 1 && (
+                                        <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
+                                            <LazyLoad height={300}>
+                                                <a href={item.url} target="_blank" className='animated bounceIn'>
+                                                    <img src={item.icon} alt="" />
+                                                    <h2>{item.name}</h2>
+                                                    <p>{item.fdescribe}</p>
+                                                </a>
+                                            </LazyLoad>
+                                        </Col>
+                                    ))}
+                                </Row>
+                                <div className="friends-title">顶级大佬</div>
+                                <Row className="friends-wrap" justify="space-between">
+                                    {friendlist.map(item => item.tag == 2 && (
+                                        <Col className="friends-item" xs={24} sm={24} md={11} lg={11} xl={11}>
+                                            <LazyLoad height={300}>
+                                                <a href={item.url} target="_blank" className='animated bounceIn'>
+                                                    <img src={item.icon} alt="" />
+                                                    <h2>{item.name}</h2>
+                                                    <p>{item.fdescribe}</p>
+                                                </a>
+                                            </LazyLoad>
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </LemonLoading>
                         </div>
-                    </Col>)}
+                    </Col>
                     <Col xs={0} sm={0} md={0} lg={7} xl={7} id='main-right'>
                         <Laside />
                     </Col>

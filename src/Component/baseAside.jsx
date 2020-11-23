@@ -14,6 +14,7 @@ import {
     withRouter,
     Link,
 } from 'react-router-dom'
+import { LemonLoading } from '../Component/loader';
 
 var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/blogView'
@@ -88,33 +89,35 @@ class Laside extends Component {
                         </div>
                         <div className="tag-2m tag-qq">麻烦备注从博客扫码来的哦<img src={qq2} alt="" /></div>
                     </div>
-                    {(haveHot && !loading) &&
+                    {haveHot &&
                         <div className="hot-door animated fadeInRight">
                             <div className="hot-title">
                                 <span className='animated'><FireOutlined /><br /> 热度榜</span>
                             </div>
-                            <div className="hot-context">
-                                <ul className='hot-list'>
-                                    {hots.map(item => (
-                                        <LazyLoad height={400}>
-                                            <li className='hot-item animated fadeInRight'>
-                                                <div>
-                                                    <Link to={"/blogassign/article" + item.id}> {item.title}</Link>
-                                                    <span>{item.fire}<FireOutlined /></span>
-                                                </div>
-                                                <div className='hot-brief'>
-                                                    <img src={"https://myblog.city:4000" + item.imgsrc} />
-                                                    <p>
-                                                        <Paragraph ellipsis={{ rows: 5, expandable: false }}>
-                                                            {item.brief}
-                                                        </Paragraph>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </LazyLoad>
-                                    ))}
-                                </ul>
-                            </div>
+                            <LemonLoading loading={loading}>
+                                <div className="hot-context">
+                                    <ul className='hot-list'>
+                                        {hots.map(item => (
+                                            <LazyLoad height={400}>
+                                                <li className='hot-item animated fadeInRight'>
+                                                    <div>
+                                                        <Link to={"/blogassign/article" + item.id}> {item.title}</Link>
+                                                        <span>{item.fire}<FireOutlined /></span>
+                                                    </div>
+                                                    <div className='hot-brief'>
+                                                        <img src={"https://myblog.city:4000" + item.imgsrc} />
+                                                        <p>
+                                                            <Paragraph ellipsis={{ rows: 5, expandable: false }}>
+                                                                {item.brief}
+                                                            </Paragraph>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            </LazyLoad>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </LemonLoading>
                         </div>
                     }
                 </div>

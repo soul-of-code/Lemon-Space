@@ -11,10 +11,11 @@ import Remarker from '../Component/Remarker'
 import moment from 'moment'
 import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
-import '../publicCSS/style.css'
+import '../publicCSS/style.css';
 import {
     withRouter,
-} from 'react-router-dom'
+} from 'react-router-dom';
+import { LemonLoading } from '../Component/loader';
 
 var baseAxios = axios.create({
     baseURL: 'https://myblog.city:4000/interactView'
@@ -180,7 +181,6 @@ class about extends Component {
     }
 
     handleInput = e => {
-        const { inputValue } = this.state;
         this.setState({ inputValue: e.target.value });
     }
 
@@ -300,40 +300,36 @@ class about extends Component {
                                 <div className="interact-edit-header interact-list-header">
                                     留言列表
                                 </div>
-                                {
-                                    !loading && (
-                                        <div className="interact-list-context">
-                                            {interactData.map(fitem => (
-                                                <LazyLoad height={400} className='animated fadeInRight'>
-                                                    <Remarker
-                                                        name={fitem.ismaster ? <span className='master'>博主</span> : fitem.name}
-                                                        context={fitem.context}
-                                                        headimg={`http://q4.qlogo.cn/g?b=qq&nk=${fitem.email}&s=3`}
-                                                        Reply={(
-                                                            <span>{moment(new Date(fitem.create_time * 1000)).format('YYYY年MM月DD日 HH:mm:ss')}
-                                                                {fitem.canremark ? <a href="#reply-a" style={{ marginLeft: "10px" }}
-                                                                    onClick={() => this.handleReply(fitem)}>回复</a>
-                                                                    : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
-                                                        {fitem.child_act.map(citem => (
-                                                            <Remarker
-                                                                name={<span>{(citem.ismaster ? <span className='master'>博主</span> : citem.name)}  回复  {(citem.fismaster ? <span className='master'>博主</span> : citem.fname)}  ：</span>}
-                                                                context={citem.context}
-                                                                headimg={`http://q4.qlogo.cn/g?b=qq&nk=${citem.email}&s=3`}
-                                                                Reply={(
-                                                                    <span>{moment(new Date(citem.create_time * 1000)).format('YYYY年MM月DD日 HH:mm:ss')}
-                                                                        {citem.canremark ? <a href="#reply-a" style={{ marginLeft: "10px" }}
-                                                                            onClick={() => this.handleReply(fitem, citem)}>回复</a>
-                                                                            : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
-
-                                                            </Remarker>
-                                                        ))}
-                                                    </Remarker>
-                                                </LazyLoad>
-                                            ))}
-                                        </div>
-                                    )
-                                }
-
+                                <LemonLoading loading={loading}>
+                                    <div className="interact-list-context">
+                                        {interactData.map(fitem => (
+                                            <LazyLoad height={400} className='animated fadeInRight'>
+                                                <Remarker
+                                                    name={fitem.ismaster ? <span className='master'>博主</span> : fitem.name}
+                                                    context={fitem.context}
+                                                    headimg={`http://q4.qlogo.cn/g?b=qq&nk=${fitem.email}&s=3`}
+                                                    Reply={(
+                                                        <span>{moment(new Date(fitem.create_time * 1000)).format('YYYY年MM月DD日 HH:mm:ss')}
+                                                            {fitem.canremark ? <a href="#reply-a" style={{ marginLeft: "10px" }}
+                                                                onClick={() => this.handleReply(fitem)}>回复</a>
+                                                                : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
+                                                    {fitem.child_act.map(citem => (
+                                                        <Remarker
+                                                            name={<span>{(citem.ismaster ? <span className='master'>博主</span> : citem.name)}  回复  {(citem.fismaster ? <span className='master'>博主</span> : citem.fname)}  ：</span>}
+                                                            context={citem.context}
+                                                            headimg={`http://q4.qlogo.cn/g?b=qq&nk=${citem.email}&s=3`}
+                                                            Reply={(
+                                                                <span>{moment(new Date(citem.create_time * 1000)).format('YYYY年MM月DD日 HH:mm:ss')}
+                                                                    {citem.canremark ? <a href="#reply-a" style={{ marginLeft: "10px" }}
+                                                                        onClick={() => this.handleReply(fitem, citem)}>回复</a>
+                                                                        : <span style={{ marginLeft: "10px" }}>这位朋友设置了仅博主回复</span>} </span>)}>
+                                                        </Remarker>
+                                                    ))}
+                                                </Remarker>
+                                            </LazyLoad>
+                                        ))}
+                                    </div>
+                                </LemonLoading>
                                 <div className='waiting'>-- 已经到底了 --</div>
                             </div>
                         </div>
