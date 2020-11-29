@@ -23,13 +23,19 @@
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "react-syntax-highlighter": "^12.2.1"
+    "react-syntax-highlighter": "^12.2.1",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0"
   },
   "scripts": {
-    "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test-start": "react-app-rewired start",
+    "faster-start":"node host",
+    "format-start":"yarn build && node host"
+
   },
   "eslintConfig": {
     "extends": "react-app"
