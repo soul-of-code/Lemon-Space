@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 import 'moment/locale/zh-cn';
 import Blog from '../index'
 import { withRouter } from 'react-router-dom'
 import { LemonLoading } from '../../Component/loader'
+import LemonAxios from 'utils/lemon_axios'
 
-var baseAxios = axios.create({
-    baseURL: 'https://myblog.city:4000/blogView'
-})
+var baseAxios = new LemonAxios('/blogView');
 
 function Home() {
     const [state, setState] = useState({

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col, Timeline, message } from 'antd'
 import { Helmet } from 'react-helmet'
 import { ClockCircleOutlined } from '@ant-design/icons'
-import axios from 'axios';
 import Laside from '../Component/baseAside';
 import moment from 'moment';
 import '../publicCSS/allTheme.css';
@@ -12,10 +11,9 @@ import {
     withRouter,
 } from 'react-router-dom';
 import { LemonLoading } from '../Component/loader';
+import LemonAxios from 'utils/lemon_axios'
 
-var baseAxios = axios.create({
-    baseURL: 'https://myblog.city:4000/lifeView'
-})
+var baseAxios = new LemonAxios('/lifeView');
 
 function Life() {
     const [state, setState] = useState({

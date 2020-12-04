@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col, Typography } from 'antd'
 import { Component } from 'react'
-import axios from 'axios'
 import LazyLoad from 'react-lazyload'
 import qq2 from '../img/qq2.png'
 import wx2 from '../img/wx2.png'
@@ -15,10 +14,10 @@ import {
     Link,
 } from 'react-router-dom'
 import { LemonLoading } from '../Component/loader';
+import LemonAxios from 'utils/lemon_axios'
 
-var baseAxios = axios.create({
-    baseURL: 'https://myblog.city:4000/blogView'
-})
+var baseAxios = new LemonAxios('/blogView');
+var hoster = baseAxios.environment;
 
 const { Paragraph } = Typography
 
@@ -105,7 +104,7 @@ class Laside extends Component {
                                                         <span>{item.fire}<FireOutlined /></span>
                                                     </div>
                                                     <div className='hot-brief'>
-                                                        <img src={"https://myblog.city:4000" + item.imgsrc} />
+                                                        <img src={hoster + item.imgsrc} />
                                                         <p>
                                                             <Paragraph ellipsis={{ rows: 5, expandable: false }}>
                                                                 {item.brief}

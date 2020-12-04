@@ -10,6 +10,11 @@ import {
     withRouter,
     Link,
 } from 'react-router-dom'
+import LemonAxios from 'utils/lemon_axios'
+
+var baseAxios = new LemonAxios('/blogView');
+var hoster = baseAxios.environment;
+
 function Blog(props) {
     const [blogList, setBlogList] = useState([]);
 
@@ -77,7 +82,7 @@ function Blog(props) {
                                         </Col>
                                         <Col xs={24} sm={24} md={10} lg={10} xl={10} className='img'>
                                             <Link to={`/blogassign/article${data.id}`}>
-                                                <img src={"https://myblog.city:4000" + data.imgsrc} />
+                                                <img src={hoster + data.imgsrc} />
                                             </Link>
                                         </Col>
                                     </Row>

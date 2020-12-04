@@ -1,9 +1,8 @@
 import React from 'react';
-import { Row, Col, Input, Form, Button, Popover, Switch, Comment, Avatar, message, Tooltip } from 'antd'
+import { Row, Col, Input, Form, Button, Popover, Switch, message, Tooltip } from 'antd'
 import { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { SmileOutlined } from '@ant-design/icons'
-import axios from 'axios'
 import Laside from '../Component/baseAside'
 import inher from '../img/inherImg.jpg'
 import LazyLoad from 'react-lazyload'
@@ -16,10 +15,10 @@ import {
     withRouter,
 } from 'react-router-dom';
 import { LemonLoading } from '../Component/loader';
+import LemonAxios from 'utils/lemon_axios'
 
-var baseAxios = axios.create({
-    baseURL: 'https://myblog.city:4000/interactView'
-})
+var baseAxios = new LemonAxios('/interactView');
+var hoster = baseAxios.environment;
 
 class about extends Component {
     addRef = React.createRef();//处理添加数据的表单
@@ -74,7 +73,7 @@ class about extends Component {
 
         const arr = context.split('@lmCLeMon123@').reduce((pre, cur) => {
             const emojiId = this.isEmoji(cur);
-            pre.push((emojiId === -1) ? cur : <img src={'https://myblog.city:4000/emoji/' + emojiId + ".gif"} alt="" />)
+            pre.push((emojiId === -1) ? cur : <img src={hoster + '/emoji/' + emojiId + ".gif"} alt="" />)
             return pre;
         }, [])
 
@@ -124,7 +123,7 @@ class about extends Component {
                     addList.femail = replyitem.email;
                     addList.fismaster = replyitem.ismaster;
                 }
-                baseAxios.get(queryURL, { params: addList })
+                baseAxios.get(queryURL, addList)
                     .then(res => {
                         if (res.data.err) {
                             message.error(res.data.err)
@@ -261,7 +260,7 @@ class about extends Component {
                                                         {emoji.map(item => (
                                                             <span className='emoji-item'>
                                                                 <Tooltip placement="top" trigger="hover" arrowPointAtCenter={true} title={'[' + item.name + ']'} mouseEnterDelay={0} mouseLeaveDelay={0}>
-                                                                    <img src={'https://myblog.city:4000/emoji/' + item.id + ".gif"} alt="" onClick={() => this.handleAddEmoji(item.name)} />
+                                                                    <img src={hoster + '/emoji/' + item.id + ".gif"} alt="" onClick={() => this.handleAddEmoji(item.name)} />
                                                                 </Tooltip >
                                                             </span>
                                                         ))}

@@ -4,7 +4,6 @@ import { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { CloseCircleFilled, CheckCircleFilled } from '@ant-design/icons';
 import LazyLoad from 'react-lazyload';
-import axios from 'axios';
 import Laside from '../Component/baseAside';
 import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
@@ -12,10 +11,9 @@ import {
     withRouter,
 } from 'react-router-dom';
 import { LemonLoading } from '../Component/loader';
-var baseAxios = axios.create({
-    baseURL: 'https://myblog.city:4000/FriendView'
-})
+import LemonAxios from 'utils/lemon_axios'
 
+var baseAxios = new LemonAxios('/FriendView');
 
 class about extends Component {
     constructor(props) {

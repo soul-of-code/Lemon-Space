@@ -4,7 +4,7 @@ import { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import ReactMarkdown from 'react-markdown'
 import { FireFilled, LikeFilled, BorderlessTableOutlined, ArrowLeftOutlined } from '@ant-design/icons'
-import axios from 'axios'
+import LemonAxios from 'utils/lemon_axios'
 import Laside from '../Component/baseAside'
 import moment from 'moment'
 import '../publicCSS/allTheme.css';
@@ -16,9 +16,7 @@ import {
     Link,
 } from 'react-router-dom'
 
-var baseAxios = axios.create({
-    baseURL: 'https://myblog.city:4000/blogView'
-})
+var baseAxios = new LemonAxios('/blogView');
 
 window.scroll = 0;
 class blogAssign extends Component {
@@ -35,7 +33,7 @@ class blogAssign extends Component {
         this.setState({ loading: true });
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         var { art } = this.props.match.params;
-        baseAxios.get('/getArticle', { params: { art: art.split('article')[1] } })
+        baseAxios.get('/getArticle', { art: art.split('article')[1] })
             .then(res => {
                 if (res.data.err) {
                     window.location.href = '/'
@@ -50,7 +48,7 @@ class blogAssign extends Component {
         this.setState({ loading: true });
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         var { art } = newProps.match.params;
-        baseAxios.get('/getArticle', { params: { art: art.split('article')[1] } })
+        baseAxios.get('/getArticle', { art: art.split('article')[1] })
             .then(res => {
                 this.setState({ Art: res.data, loading: false });
             })
@@ -64,7 +62,7 @@ class blogAssign extends Component {
             message.error('你在本次浏览中已经赞过啦~')
         }
         else {
-            baseAxios.get('/addAssist', { params: { _id: Art.id } })
+            baseAxios.get('/addAssist', { _id: Art.id })
                 .then(res => {
                     if (res.data.err) {
                         message.error('点赞过程出问题了！！原因：' + res.data.err);

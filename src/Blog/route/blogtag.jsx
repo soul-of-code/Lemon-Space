@@ -1,14 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import { LemonLoading } from '../../Component/loader'
-import axios from 'axios'
 import 'moment/locale/zh-cn';
 import Blog from '../index'
 import { withRouter } from 'react-router-dom'
+import LemonAxios from 'utils/lemon_axios'
 
-var baseAxios = axios.create({
-    baseURL: 'https://myblog.city:4000/blogView'
-})
+var baseAxios = new LemonAxios('/blogView');
 
 function Home(props) {
     const [state, setState] = useState({
@@ -20,7 +18,7 @@ function Home(props) {
     useEffect(() => {
         setLoading(true)
         const { tag } = props.match.params;
-        baseAxios.get('/getBlogByTag', { params: { tag: tag.split('tag')[1] } })
+        baseAxios.get('/getBlogByTag', { tag: tag.split('tag')[1] })
             .then(data => {
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
                 if (data.data.nullmsg) {
