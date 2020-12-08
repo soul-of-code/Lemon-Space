@@ -328,8 +328,8 @@ class about extends Component {
                                             </LazyLoad>
                                         ))}
                                     </div>
+                                    <div className='waiting'>-- 已经到底了 --</div>
                                 </LemonLoading>
-                                <div className='waiting'>-- 已经到底了 --</div>
                             </div>
                         </div>
                     </Col>
