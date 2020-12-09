@@ -7,7 +7,7 @@ import {
 import LazyLoad from 'react-lazyload'
 
 
-export const blogArticle = function (props) {
+export default function BlogArticle (props) {
     const { data, hoster } = props;
 
     return (

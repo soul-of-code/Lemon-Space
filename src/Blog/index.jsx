@@ -9,8 +9,7 @@ import {
     Link,
 } from 'react-router-dom'
 import LemonAxios from 'utils/lemon_axios'
-
-import { blogArticle } from './components/blog-article'
+import BlogArticle from './components/blog-article'
 
 var baseAxios = new LemonAxios('/blogView');
 var hoster = baseAxios.environment;
@@ -25,7 +24,6 @@ function Blog(props) {
         setBlogList([])
         setBlogList(data)
     }, [data])
-
     return (
         <div className='center' >
             <Helmet>
@@ -36,7 +34,7 @@ function Blog(props) {
                 <Col xs={24} sm={24} md={24} lg={17} xl={17} id='main-left'>
                     {panelName && <div className="blog-panel"><Link to="/">{panelName}</Link></div>}
                     {blogList.map(data => (
-                        <blogArticle data={data} hoster={hoster} />
+                        <BlogArticle data={data} hoster={hoster} />
                     ))}
                     <div className='waiting'>-- 已经到底了 --</div>
                     <br />

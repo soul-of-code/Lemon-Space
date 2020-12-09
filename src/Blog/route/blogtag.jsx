@@ -16,6 +16,7 @@ function Home(props) {
     const setLoading = (loading) => setState(v => ({ ...v, loading }))
 
     useEffect(() => {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
         setLoading(true)
         const { tag } = props.match.params;
         baseAxios.get('/getBlogByTag', { tag: tag.split('tag')[1] })

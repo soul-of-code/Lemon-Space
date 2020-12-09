@@ -16,6 +16,7 @@ function Home(props) {
     const setLoading = (loading) => setState(v => ({ ...v, loading }))
 
     useEffect(() => {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
         setLoading(true);
         var { str } = props.match.params;
         baseAxios.get('/getBlogBySearch', { tag: str })

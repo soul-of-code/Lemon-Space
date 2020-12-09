@@ -20,6 +20,7 @@ function Home() {
     }
 
     useEffect(() => {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
         setLoading(true);
 
         baseAxios.get('/getBlog')

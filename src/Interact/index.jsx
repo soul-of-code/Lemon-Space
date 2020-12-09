@@ -41,6 +41,7 @@ class about extends Component {
     }
 
     componentDidMount() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
         this.setState({ loading: true })
         baseAxios.get('/getInteract')
             .then(res => {

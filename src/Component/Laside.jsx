@@ -1,9 +1,7 @@
 import React from 'react';
 import { Row, Col, Typography } from 'antd'
 import { Component } from 'react'
-import { FireOutlined, QqOutlined, GithubOutlined, ZhihuOutlined } from '@ant-design/icons'
-import banner from '../img/68.jpg';
-import headImg from '../img/headImg.jpg'
+import { FireOutlined } from '@ant-design/icons'
 import LazyLoad from 'react-lazyload'
 import '../publicCSS/allTheme.css';
 import 'moment/locale/zh-cn';
@@ -13,6 +11,7 @@ import {
 } from 'react-router-dom';
 import { LemonLoading } from '../Component/loader';
 import LemonAxios from 'utils/lemon_axios'
+import LemonCard from './lemon-card'
 
 var baseAxios = new LemonAxios('/blogView');
 var hoster = baseAxios.environment;
@@ -57,33 +56,7 @@ class Laside extends Component {
         const { tags, hots, loading, tag_action, searchStr } = this.state;
         return (
             <div>
-                <div className='visiting-card animated fadeInRight'>
-                    <div className="card-banner" style={{ background: 'url(' + banner + ') no-repeat top center' }}>
-                        <img src={headImg} alt="" />
-                    </div>
-                    <div className="card-context">
-                        <div className="card-name">Lemon | Limcong</div>
-                        <div className="card-tag"><i>前端工程师</i></div>
-                        <div className="card-mail">1301872983@qq.com</div>
-                        <div className="card-smalltext">
-                            一个爱吉他爱篮球爱唱歌的95后伪全能程序猿一枚，对很多方向都略有涉猎，但是没有一项精通。希望通过我在这里分享的踩坑记录可以帮助一些人更好更快的掌握一些知识或者技巧。
-                                </div>
-                    </div>
-                    <div className="card-footer">
-                        <Row>
-                            <Col span={9}><div className="solid"></div></Col>
-                            <Col span={6}><div className="tips">社交账号</div></Col>
-                            <Col span={9}><div className="solid"></div></Col>
-                        </Row>
-                    </div>
-                    <div className="card-link">
-                        <Row>
-                            <Col span={8}><div className="link-item"> <a href="tencent://message/?uin=1301872984&Site=&Menu=yes" className="card-qq"><QqOutlined /></a></div></Col>
-                            <Col span={8}><div className="link-item"><a href="https://github.com/soul-of-code" className="card-github" target="_blank"><GithubOutlined /></a></div></Col>
-                            <Col span={8}><div className="link-item"> <a href="https://www.zhihu.com/people/cong-ba-ba-bu-ge-you" className="card-zhihu" target="_blank"><ZhihuOutlined /></a></div></Col>
-                        </Row>
-                    </div>
-                </div>
+                <LemonCard />
                 <div className="search-box animated fadeInRight">
                     <Row>
                         <Col span={20}>
