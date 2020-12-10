@@ -5358,10 +5358,20 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+http@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.npm.taobao.org/http/download/http-0.0.1-security.tgz#3aac09129d12dc2747bbce4157afde20ad1f7995"
+  integrity sha1-OqwJEp0S3CdHu85BV6/eIK0feZU=
+
 https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
+
+https@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/https/download/https-1.0.0.tgz#3c37c7ae1a8eeb966904a2ad1e975a194b7ed3a4"
+  integrity sha1-PDfHrhqO65ZpBKKtHpdaGUt+06Q=
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"

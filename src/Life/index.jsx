@@ -70,10 +70,10 @@ function Life() {
                                     </Timeline.Item>
                                 ))}
                             </Timeline>
+                            <div className="waiting">
+                                -- Endding --
+                            </div>
                         </LemonLoading>
-                        <div className="waiting">
-                            -- Endding --
-                        </div>
                     </div>
 
                 </Col>

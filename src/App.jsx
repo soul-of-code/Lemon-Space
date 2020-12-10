@@ -40,6 +40,7 @@ function App() {
           <Route path='/about' component={About}></Route>
           <Route path='/blog/:tag' component={blogTag}></Route>
           <Route path='/search/:str' component={search}></Route>
+          <Route path='/search' component={search}></Route>
           <Route path='/blogassign/:art' component={blogAssign}></Route>
         </Switch>
       </div>
