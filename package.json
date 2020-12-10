@@ -30,11 +30,11 @@
   },
   "scripts": {
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "test-start": "react-app-rewired start",
-    "faster-start":"node host",
-    "format-start":"yarn build && node host"
+    "test": "react-app-rewired start",
+    "faster":"node host",
+    "lastest":"yarn build && node host",
+    "start":"git pull && yarn build && node host"
 
   },
   "eslintConfig": {
