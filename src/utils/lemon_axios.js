@@ -5,13 +5,13 @@ import axios from 'axios'
  */
 export default class LemonAxios {
     constructor(interFace) {
-        //当前请求环境
+        // 当前请求环境
         this.environment = window.location.href.includes('https') ? 'https://myblog.city:4000' : 'http://myblog.city:5000';
         this.interFace = interFace.startsWith('/') ? interFace : "/" + interFace;
-        //请求的baseAxios
+        // 请求的baseAxios
         this.createRequest()
     }
-    //构造axios
+    // 构造axios
     createRequest() {
         const { interFace } = this;
         this.lemonRequest = axios.create({
@@ -19,8 +19,13 @@ export default class LemonAxios {
         })
     }
 
-    //get请求
+    // get请求
     get(apiUrl, data = {}, options = {}) {
         return this.lemonRequest.get(apiUrl, { params: data, ...options })
+    }
+
+    // post请求
+    post(apiUrl, data = {}, options = {}) {
+        return this.lemonRequest.post(apiUrl, data, options)
     }
 }
