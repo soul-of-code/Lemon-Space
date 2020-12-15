@@ -15,9 +15,17 @@
 ## Available Scripts
 
 In the project directory, you can run:
-    "test-start": "react-app-rewired start",
-    "faster-start":"node host",
-    "format-start":"yarn build && node host"
+
+"build": "react-app-rewired build",
+
+"test": "react-app-rewired start",
+
+"faster":"node host",
+
+"lastest":"yarn build && node host",
+
+"start":"git pull && yarn build && node host"
+
 ### `yarn test`
 
 通过测试环境打开lemon-space<br />
