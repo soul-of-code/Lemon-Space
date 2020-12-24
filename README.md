@@ -61,4 +61,4 @@ taskkill /f /t /im "找到的端口号"
 
 lsof -i:443 // 找到进程id
 
-kill 进程id
+kill -9 进程id
